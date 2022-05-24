@@ -1,0 +1,2 @@
+
+    alert("test Thymeleaf.js!");

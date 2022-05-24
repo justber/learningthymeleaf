@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Thymeleaf快速入门-Hello Thymeleaf</title>
+</head>
+<body>
+
+<div th:include="include::footer1"></div>
+    <table>
+        <thead >
+            <tr>
+                <th>Index</th>
+                <th>学生id</th>
+                <th>学生姓名</th>
+            </tr>
+        </thead>
+        <!-- 升级版
+            status表示存储students的状态值
+            th:text 是取值的意思
+
+        -->
+        <tbody>
+        <tr th:class="${status.even}?'even':'odd'" th:each="s,status:${students}">
+            <td th:text="${status.index}"></td>
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+
+<div th:include="include::footer2(2021,2023)"></div>
+<style>
+    <!-- clss选择器-->
+    .even{
+        background-color: hotpink;
+    }
+    .odd{
+        background-color: cornflowerblue;
+    }
+</style>
+</html>

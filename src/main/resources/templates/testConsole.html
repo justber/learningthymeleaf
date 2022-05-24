@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Thymeleaf快速入门-Hello Thymeleaf</title>
+    <script th:inline="javascript">
+        var single = [[${student}]];
+        console.log(single.name + "/" + single.id);
+    </script>
+</head>
+<body>
+</body>
+</html>
+
+通过th:inline="javascript"添加到 script 标签
+，这样 JavaScript 代码即可访问 model 中的属性，再通过[[${}]]格式来获得实际的值

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Thymeleaf快速入门-Hello Thymeleaf</title>
+</head>
+<script type="text/javascript" src="../../webapp/static/js/thymeleaf.js" ></script>
+<body>
+<!-- 当students集合为空则显示提示信息 -->
+<div th:if="${#lists.isEmpty(students)}">studnets集合为空！</div>
+<!-- 当students集合不为空时才会显示下面的元素
+TODO 这个地方复习el表达式和jstl表达式
+ 通过表达式，判断了 students 是否为空，Thymeleaf 支持 >、<、>=、<=、==、!= 作为比较条件，
+ 同时也支持将 SpringEL 表达式语言用于条件中，表达式中的语法是 Thymeleaf 模板自带的一种内置工具，
+ 像这样的内置工具不仅方便而且能提高我们的效率，完整的内置工具在这里可以看到：
+ -->
+<div th:if="${not #lists.isEmpty(students)}">
+    <table>
+        <thead>
+        <tr>
+            <th>index</th>
+            <th>学生id</th>
+            <th>学生姓名</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:class="${status.even}?'even':'odd'" th:each="s,status:${students}">
+            <td th:text="${status.index}"></td>
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<style>
+    .even {
+        background-color: hotpink;
+    }
+
+    .odd {
+        background-color: cornflowerblue;
+    }
+</style>
+</html>
